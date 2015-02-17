@@ -1,3 +1,6 @@
+; NOTE: this includes system-call macros
+; and platform specific header stuff
+; NOTE: actual code for this is in code/{bsd, dos, etc}/sys.asm
 %include "sys.asm"
 
 section .data

@@ -1,8 +1,3 @@
-section .text
-
-; NOTE: that's a bit BSD-specific code here
-; TODO: make it cross-platform
-
 %macro sys.exit 1 ; status
     push dword %1
     sys._call 1

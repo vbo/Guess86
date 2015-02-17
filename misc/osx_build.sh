@@ -3,6 +3,7 @@ mkdir -p ./build
 nasm ./code/main.asm \
     -f macho \
     -i ./code/ \
+    -i ./code/bsd/ \
     -o ./build/main.o
 
 ld ./build/main.o \
