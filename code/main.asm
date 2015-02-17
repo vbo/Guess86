@@ -22,17 +22,7 @@ static_string too_high, {"Nope. It's too high!", NL}
 input_buf times input_buf_size db 0
 rand db 0
 
-
-section .text
-
-global main
-
-main:
-    jmp init_rand
-    sys.write 1, heading, heading.length
-    jmp retry_loop
-
-init_rand:
+%macro init_rand 0
     ; NOTE: this makes a "random"
     ; number from 0 to 7 using last 3 bits
     ; of current cycle count
@@ -40,6 +30,15 @@ init_rand:
     rdtsc
     and eax, 7
     mov [rand], al
+%endmacro
+
+section .text
+
+global main
+
+main:
+    init_rand
+    sys.write 1, heading, heading.length
 
 retry_loop:
     sys.write 1, prompt, prompt.length
