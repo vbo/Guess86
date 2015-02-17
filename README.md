@@ -11,10 +11,19 @@ This is a very basic "Guess the Number" game implementation written in x86 assem
     Enter a number [0,7]:3
     Winner! 
 
-I am building it using nasm macro-assembler on OS X (check out `misc/build.sh`).
-The game uses direct BSD system calls so may be a bit non-portable =)
+## Build intructions
+Currently supported platforms:
+ - OS X
+ - MS DOS
+
+Just use build script for your platform (e.g. `misc/osx_build.sh`). Build scripts depend on
+[nasm](http://www.nasm.us/) assembler and (for some platforms) system linker.
+
+## Porting to Other Platforms
+Basically the game consists of two parts: platform-independent code located in `code/*.asm` and
+platform API code located in `code/{platform}/*.asm`. So hopefully all you need is to prepare a build script for your platform
+and implemenent platform API (that's just macros like `sys.read`, `sys.exit` etc).
 
 ## TODOs
- - Make it cross-platform
  - Use better PRNG
  - Add failure conditions
